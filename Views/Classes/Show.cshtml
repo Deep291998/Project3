@@ -1,0 +1,33 @@
+﻿@model project3.Models.Classes
+@{
+    ViewBag.Title = "Show";
+}
+
+<a class="navlink" href="/Classes/ListClasses">Back To classes</a>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+<div id="containershow">
+    <h2>@Model.ClassId @Model.ClassCode</h2>
+    <table>
+        <tr>
+            <th>code-ID</th>
+            <th>class-code</th>
+            <th>class-name</th>
+
+        </tr>
+        <tr>
+            <td>@Model.ClassId</td>
+            <td>@Model.ClassCode</td>
+            <td>@Model.ClassName</td>
+        </tr>
+    </table>
+</div>
+
+
+
+
+

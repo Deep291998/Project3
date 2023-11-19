@@ -1,0 +1,33 @@
+﻿@model project3.Models.Teacher
+@{
+    ViewBag.Title = "ShowT";
+}
+
+
+<a class="navlink" href="/Teacher/ListTeachers">Back To Teacher</a>
+
+<style>
+
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+<div id="containershow">
+    <h2>@Model.TeacherFname @Model.TeacherLname</h2>
+    <table>
+        <tr>
+            <th>Teacher-ID</th>
+            <th>Teacher-Number</th>
+            <th>Hire-date</th>
+            <th>salary</th>
+        </tr>
+        <tr>
+            <td>@Model.TeacherId</td>
+            <td>@Model.EmployeeNumber</td>
+            <td>@Model.HireDate</td>
+            <td>@Model.Salary</td>
+
+        </tr>
+    </table>
+</div>
+
