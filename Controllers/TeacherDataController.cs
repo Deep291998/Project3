@@ -23,7 +23,7 @@ namespace project3.Controllers
         /// </returns>
 
         [HttpGet]
-        [Route("api/listTeachers")]
+        [Route("api/Teacher/listTeachers")]
         public IEnumerable<Teacher> ListTeachers()
         {
             //Create an instance of a connection
@@ -41,7 +41,7 @@ namespace project3.Controllers
             //Gather Result Set of Query into a variable
             MySqlDataReader ResultSet = cmd.ExecuteReader();
 
-            //Create an empty list of Authors
+           
             List<Teacher> Teachers = new List<Teacher> { };
 
             //Loop Through Each Row the Result Set
@@ -78,7 +78,7 @@ namespace project3.Controllers
         }
 
         /// <summary>
-        /// Returns teacher details from the database by specifying the primary key authorid
+    
         /// </summary>
         /// <param name="id">the teacher ID in the database</param>
         /// <returns>A teacher object</returns>
@@ -125,5 +125,82 @@ namespace project3.Controllers
             }
             return NewTeacher;
         }
+
+        /// <summary>
+        /// Deletes an Teacher from the connected MySQL Database if the ID of that teacher exists. Does NOT maintain relational integrity. Non-Deterministic.
+        /// </summary>
+        /// <param name="id">The ID of the teacher.</param>
+        /// <example>POST /api/Teacher/DeleteTeacher/3</example>
+        [HttpPost]
+        public void Deleteteacher(int id)
+        {
+            //Create an instance of a connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+            //Open the connection between the web server and database
+            Conn.Open();
+
+            //Establish a new command (query) for our database
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            //SQL QUERY
+            cmd.CommandText = "Delete from teachers where teacherid=@id";
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            Conn.Close();
+
+
+        }
+
+        /// <summary>
+        /// Adds an teacher to the MySQL Database.
+        /// </summary>
+        /// <param name="Newteacher">An object with fields that map to the columns of the teacher table. Non-Deterministic.</param>
+        /// <example>
+        /// POST api/Teacher/AddTeacher 
+        /// FORM DATA / POST DATA / REQUEST BODY 
+        /// {
+        ///	"teacherFname":"Christine",
+        ///	"teacherLname":"Bittle",
+        ///	"hiredate":"12 nov 2016",
+        ///	"salary":"1000$"
+        /// }
+        /// </example>
+        [HttpPost]
+       
+        public void Addteacher([FromBody] Teacher Newteacher)
+        {
+            //Create an instance of a connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+         
+
+            //Open the connection between the web server and database
+            Conn.Open();
+
+            //Establish a new command (query) for our database
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            //SQL QUERY
+            cmd.CommandText = "insert into teachers (teacherfname, teacherlname, employeenumber, hiredate, salary) values (@teacherfname,@teacherlname,@employeenumber, CURRENT_DATE(), @salary)";
+            cmd.Parameters.AddWithValue("@teacherfname", Newteacher.TeacherFname);
+            cmd.Parameters.AddWithValue("@teacherlname", Newteacher.TeacherLname);
+            cmd.Parameters.AddWithValue("@employeenumber", Newteacher.EmployeeNumber);
+            
+            cmd.Parameters.AddWithValue("@salary", Newteacher.Salary);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            Conn.Close();
+
+
+
+        }
+
     }
 }
+

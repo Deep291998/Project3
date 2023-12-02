@@ -65,19 +65,19 @@ namespace project3.Controllers
                     ClassName = ClassName
                 };
 
-                //Add the Author Name to the List
+                
                 Classes.Add(NewClasses);
             }
 
             //Close the connection between the MySQL Database and the WebServer
             Conn.Close();
 
-            //Return the final list of author names
+           
             return Classes;
         }
 
         /// <summary>
-        /// Returns class details from the database by specifying the primary key authorid
+        ///
         /// </summary>
         /// <param name="id">the class ID in the database</param>
         /// <returns>A class object</returns>

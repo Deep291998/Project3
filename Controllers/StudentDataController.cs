@@ -40,7 +40,7 @@ namespace project3.Controllers
             //Gather Result Set of Query into a variable
             MySqlDataReader ResultSet = cmd.ExecuteReader();
 
-            //Create an empty list of Authors
+            //Create an empty list of student
             List<Student> Students = new List<Student> { };
 
             //Loop Through Each Row the Result Set
@@ -63,19 +63,18 @@ namespace project3.Controllers
                     EnrolDate = EnrolDate
                 };
 
-                //Add the Author Name to the List
+                
                 Students.Add(NewStudent);
             }
 
             //Close the connection between the MySQL Database and the WebServer
             Conn.Close();
 
-            //Return the final list of author names
+           
             return Students;
         }
 
         /// <summary>
-        /// Returns student details from the database by specifying the primary key authorid
         /// </summary>
         /// <param name="id">the student ID in the database</param>
         /// <returns>A student object</returns>

@@ -273,12 +273,14 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Classes\List.cshtml" />
-    <Content Include="Views\Classes\Show.cshtml" />
-    <Content Include="Views\Student\List.cshtml" />
-    <Content Include="Views\Student\Show.cshtml" />
-    <Content Include="Views\Teacher\List.cshtml" />
-    <Content Include="Views\Teacher\Show.cshtml" />
+    <Content Include="Views\Classes\ListClasses.cshtml" />
+    <Content Include="Views\Classes\ShowClasses.cshtml" />
+    <Content Include="Views\Student\ListStudents.cshtml" />
+    <Content Include="Views\Student\ShowStudents.cshtml" />
+    <Content Include="Views\Teacher\ListTeachers.cshtml" />
+    <Content Include="Views\Teacher\ShowTeachers.cshtml" />
+    <Content Include="Views\Teacher\DeleteConfirm.cshtml" />
+    <Content Include="Views\Teacher\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
