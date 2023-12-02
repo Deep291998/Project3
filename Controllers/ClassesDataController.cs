@@ -41,7 +41,7 @@ namespace project3.Controllers
             //Gather Result Set of Query into a variable
             MySqlDataReader ResultSet = cmd.ExecuteReader();
 
-            //Create an empty list of Authors
+            //Create an empty list of classes
             List<Classes> Classes = new List<Classes> { };
 
             //Loop Through Each Row the Result Set
