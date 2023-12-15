@@ -73,5 +73,28 @@ namespace project3.Controllers
 
             return RedirectToAction("ListTeachers");
         }
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="id">Id of the Teacher</param>
+        /// <returns>A dynamic "Update Teacher" webpage which provides the current information of the Teacher and asks the user for new information as part of a form.</returns>
+        /// <example>GET : /Teacher/Update/5</example>
+        public ActionResult Update(int id)
+        {
+            TeacherDataController controller = new TeacherDataController();
+            Teacher SelectedTeacher = controller.FindTeacher(id);
+
+            return View(SelectedTeacher);
+        }
+
+        public ActionResult Ajax_Update(int id)
+        {
+            TeacherDataController controller = new TeacherDataController();
+            Teacher SelectedTeacher = controller.FindTeacher(id);
+
+            return View(SelectedTeacher);
+        }
+
+
     }
 }
